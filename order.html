@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Sticker Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #e0e7ff;
+            --secondary: #3f37c9;
+            --dark: #1e1e24;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --border: #e2e8f0;
+            --border-dark: #cbd5e0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .order-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 25px;
+        }
+        
+        .card-header h1 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #4a5568;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+        }
+        
+        .upload-area input {
+            display: none;
+        }
+        
+        .upload-icon {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .upload-text {
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        .preview-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .preview-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        
+        .price-summary {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        
+        .price-total {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--primary);
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--dark);
+        }
+        
+        .info-text {
+            font-size: 13px;
+            color: #718096;
+            margin-top: 5px;
+        }
+        
+        .qr-code-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        
+        .payment-instructions {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="order-card">
+            <div class="card-header">
+                <h1>Custom Sticker Order</h1>
+            </div>
+            
+            <div class="card-body">
+                <form id="stickerForm" action="customize.html" method="post">
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Contact Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="house">House Number/Name</label>
+                            <input type="text" id="house" name="house" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="address">Full Address</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" name="pincode" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title">Order Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="stickerSize">Sticker Size</label>
+                            <select id="stickerSize" name="stickerSize" required>
+                                <option value="1">1 inch (150 stickers/sheet)</option>
+                                <option value="1.5" selected>1.5 inch (96 stickers/sheet)</option>
+                                <option value="2.3">2.3 inch (quantity varies)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sheetCount">Number of Sheets</label>
+                            <input type="number" id="sheetCount" name="sheetCount" min="5" value="5" required>
+                            <p class="info-text">Minimum order: 5 sheets</p>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title">Upload Files</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Your Logo</label>
+                            <div class="upload-area" onclick="document.getElementById('logo').click()">
+                                <div class="upload-icon">📁</div>
+                                <div class="upload-text">Click to upload logo (PNG/JPG)</div>
+                                <input type="file" id="logo" name="logo" accept="image/*" required>
+                            </div>
+                            <div class="preview-container" id="logoPreviewContainer"></div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title">Payment Information</h2>
+                    <div class="payment-instructions">
+                        <p><strong>Please scan this QR code to make payment:</strong></p>
+                        <div class="qr-code-container">
+                            <div class="qr-code">
+                                <!-- Replace with your actual QR code image -->
+                                <img src="./assets/qr.png" alt="Payment QR Code" width="100">
+                            </div>
+                            <p class="info-text">UPI ID: your.upi.id@bank</p>
+                        </div>
+                        <p>After payment, please upload the screenshot below:</p>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label>Payment Screenshot</label>
+                        <div class="upload-area" onclick="document.getElementById('payment').click()">
+                            <div class="upload-icon">💳</div>
+                            <div class="upload-text">Click to upload payment screenshot</div>
+                            <input type="file" id="payment" name="payment" accept="image/*" required>
+                        </div>
+                        <div class="preview-container" id="paymentPreviewContainer"></div>
+                    </div>
+                    
+                    <div class="price-summary">
+                        <h3 class="section-title">Order Summary</h3>
+                        <div class="price-row">
+                            <span>Price per sheet:</span>
+                            <span>₹90</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Sheets ordered:</span>
+                            <span id="sheetsCountDisplay">5</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotalDisplay">₹450</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Delivery charge:</span>
+                            <span>₹80</span>
+                        </div>
+                        <div class="price-row price-total">
+                            <span>Total Amount:</span>
+                            <span id="totalDisplay">₹530</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Proceed to Customization</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update price calculations
+        const sheetCountInput = document.getElementById('sheetCount');
+        const sheetsCountDisplay = document.getElementById('sheetsCountDisplay');
+        const subtotalDisplay = document.getElementById('subtotalDisplay');
+        const totalDisplay = document.getElementById('totalDisplay');
+        
+        sheetCountInput.addEventListener('input', updatePricing);
+        
+        function updatePricing() {
+            const sheets = parseInt(sheetCountInput.value) || 5;
+            const subtotal = sheets * 90;
+            const total = subtotal + 80;
+            
+            sheetsCountDisplay.textContent = sheets;
+            subtotalDisplay.textContent = `₹${subtotal}`;
+            totalDisplay.textContent = `₹${total}`;
+        }
+        
+        // Handle file upload previews
+        function setupFilePreview(inputId, previewContainerId) {
+            const input = document.getElementById(inputId);
+            const previewContainer = document.getElementById(previewContainerId);
+            
+            input.addEventListener('change', function(e) {
+                previewContainer.innerHTML = '';
+                
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'preview-image';
+                        previewContainer.appendChild(img);
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+        
+        setupFilePreview('logo', 'logoPreviewContainer');
+        setupFilePreview('payment', 'paymentPreviewContainer');
+    </script>
+</body>
+</html>

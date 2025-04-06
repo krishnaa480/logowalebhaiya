@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Payment - Logo Wale Bhaiya</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Logo Wale Bhaiya</h1>
+                <p>Your Trusted Sticker Printing Partner</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-container">
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-details">
+                        <div class="logo-preview">
+                            <img id="paymentLogoPreview" src="#" alt="Your Logo">
+                        </div>
+                        <div class="order-details">
+                            <p><strong>Sheets:</strong> <span id="summarySheets">5</span></p>
+                            <p><strong>Stickers:</strong> <span id="summaryStickers">480</span> (96 per sheet)</p>
+                            <p><strong>Price:</strong> ₹<span id="summaryPrice">450</span> (₹90 per sheet)</p>
+                            <p><strong>Delivery:</strong> ₹80</p>
+                            <p class="total"><strong>Total:</strong> ₹<span id="summaryTotal">530</span></p>
+                        </div>
+                    </div>
+                    <div class="customer-info">
+                        <h3>Delivery Address</h3>
+                        <p id="summaryName"></p>
+                        <p id="summaryAddress"></p>
+                        <p id="summaryCityPincode"></p>
+                        <p id="summaryState"></p>
+                        <p id="summaryPhone"></p>
+                    </div>
+                </div>
+
+                <div class="payment-methods">
+                    <h2>Make Payment</h2>
+                    <div class="payment-options">
+                        <div class="payment-option active" id="upiOption">
+                            <h3>UPI Payment</h3>
+                            <div class="qr-code">
+                                <img src="assets/upi-qr.png" alt="UPI QR Code">
+                                <p>Scan this QR code to make payment</p>
+                            </div>
+                            <div class="upi-ids">
+                                <p><strong>Or send payment to:</strong></p>
+                                <div class="upi-id">
+                                    <span>logowalebhaiya@upi</span>
+                                    <button class="copy-btn" onclick="copyUpiId('logowalebhaiya@upi')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="upi-id">
+                                    <span>9876543210@upi</span>
+                                    <button class="copy-btn" onclick="copyUpiId('9876543210@upi')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-proof">
+                        <h3>Upload Payment Proof</h3>
+                        <div class="upload-container">
+                            <div class="upload-area" id="paymentUploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Upload screenshot of your payment</p>
+                                <input type="file" id="paymentProof" accept="image/*" required>
+                            </div>
+                            <div class="preview-container" id="paymentPreviewContainer" style="display: none;">
+                                <h4>Payment Proof:</h4>
+                                <img id="paymentProofPreview" src="#" alt="Payment Proof">
+                                <button type="button" id="changePaymentProof" class="btn-secondary">Change</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn-secondary" onclick="window.location.href='order.html'">Back to Order</button>
+                        <button type="button" class="btn" id="confirmOrder">Confirm Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Placed Successfully!</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Thank you for your order. We've received your payment and will process your stickers shortly.</p>
+                <p>Your order ID: <strong>LWB<span id="orderId">12345</span></strong></p>
+                <p>We'll send you updates on your registered phone number.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Logo Wale Bhaiya</h3>
+                    <p>Your trusted partner for high-quality sticker printing services at affordable prices.</p>
+                    <div class="contact">
+                        <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+                        <span><i class="fas fa-envelope"></i> info@logowalebhaiya.com</span>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="order.html">Order Now</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Logo Wale Bhaiya. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

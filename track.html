@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order - Logo Wale Bhaiya</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Logo Wale Bhaiya</h1>
+                <p>Your Trusted Sticker Printing Partner</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                    <li><a href="track.html" class="active">Track Order</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="track-order">
+        <div class="container">
+            <h2>Track Your Order</h2>
+            <div class="track-form">
+                <div class="form-group">
+                    <label for="orderId">Order ID:</label>
+                    <input type="text" id="orderId" placeholder="Enter your order ID (e.g., LWB20231201ABC123)">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" placeholder="Enter your registered phone number">
+                </div>
+                <button class="btn" id="trackBtn">Track Order</button>
+            </div>
+            
+            <div class="order-details" id="orderDetails" style="display: none;">
+                <div class="order-header">
+                    <h3>Order #<span id="displayOrderId"></span></h3>
+                    <div class="order-status" id="orderStatus">Processing</div>
+                </div>
+                
+                <div class="order-timeline">
+                    <div class="timeline-step received active">
+                        <div class="timeline-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Order Received</h4>
+                            <p id="receivedDate">Dec 1, 2023</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step processing">
+                        <div class="timeline-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Processing</h4>
+                            <p id="processingDate">Dec 2, 2023</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step printed">
+                        <div class="timeline-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Printed</h4>
+                            <p id="printedDate">Dec 3, 2023</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step shipped">
+                        <div class="timeline-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Shipped</h4>
+                            <p id="shippedDate">Dec 4, 2023</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step delivered">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Delivered</h4>
+                            <p id="deliveredDate">Dec 6, 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <div class="summary-col">
+                            <h4>Order Details</h4>
+                            <p><strong>Sheets:</strong> <span id="detailSheets">5</span></p>
+                            <p><strong>Stickers:</strong> <span id="detailStickers">480</span> (96 per sheet)</p>
+                            <p><strong>Price:</strong> ₹<span id="detailPrice">450</span> (₹90 per sheet)</p>
+                            <p><strong>Delivery:</strong> ₹80</p>
+                            <p class="total"><strong>Total:</strong> ₹<span id="detailTotal">530</span></p>
+                        </div>
+                        <div class="summary-col">
+                            <h4>Delivery Address</h4>
+                            <p id="detailName">John Doe</p>
+                            <p id="detailAddress">123 Main St, Apt 4B</p>
+                            <p id="detailCityPincode">Mumbai - 400001</p>
+                            <p id="detailState">Maharashtra</p>
+                            <p id="detailPhone">Phone: 9876543210</p>
+                        </div>
+                    </div>
+                    
+                    <div class="logo-preview">
+                        <h4>Logo Preview</h4>
+                        <img id="detailLogo" src="#" alt="Logo Preview">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-not-found" id="orderNotFound" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Order Not Found</h3>
+                <p>We couldn't find an order with the provided details. Please check your order ID and phone number.</p>
+                <a href="order.html" class="btn">Place New Order</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Logo Wale Bhaiya</h3>
+                    <p>Your trusted partner for high-quality sticker printing services at affordable prices.</p>
+                    <div class="contact">
+                        <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+                        <span><i class="fas fa-envelope"></i> info@logowalebhaiya.com</span>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="order.html">Order Now</a></li>
+                        <li><a href="track.html">Track Order</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Logo Wale Bhaiya. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('trackBtn').addEventListener('click', trackOrder);
+        
+        async function trackOrder() {
+            const orderId = document.getElementById('orderId').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            
+            if (!orderId || !phoneNumber) {
+                alert('Please enter both Order ID and Phone Number');
+                return;
+            }
+            
+            try {
+                // In a real implementation, you would fetch from your backend
+                // const response = await fetch(`api/track_order.php?order_id=${orderId}&phone=${phoneNumber}`);
+                // const orderData = await response.json();
+                
+                // For demo purposes, we'll use mock data
+                const orderData = {
+                    success: true,
+                    order: {
+                        order_id: orderId,
+                        name: "John Doe",
+                        phone: phoneNumber,
+                        house_number: "123",
+                        address: "Main Street",
+                        city: "Mumbai",
+                        pincode: "400001",
+                        state: "Maharashtra",
+                        quantity: 5,
+                        logo_url: "assets/sample-logo.png",
+                        status: "processing",
+                        created_at: "2023-12-01 14:30:00",
+                        processing_at: "2023-12-02 10:15:00",
+                        printed_at: null,
+                        shipped_at: null,
+                        delivered_at: null
+                    }
+                };
+                
+                if (orderData.success) {
+                    displayOrderDetails(orderData.order);
+                    document.getElementById('orderDetails').style.display = 'block';
+                    document.getElementById('orderNotFound').style.display = 'none';
+                } else {
+                    document.getElementById('orderDetails').style.display = 'none';
+                    document.getElementById('orderNotFound').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error tracking order:', error);
+                alert('Failed to track order. Please try again.');
+            }
+        }
+        
+        function displayOrderDetails(order) {
+            document.getElementById('displayOrderId').textContent = order.order_id;
+            document.getElementById('orderStatus').textContent = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+            document.getElementById('orderStatus').className = 'order-status ' + order.status;
+            
+            // Update timeline based on status
+            updateTimeline(order);
+            
+            // Update order details
+            document.getElementById('detailSheets').textContent = order.quantity;
+            document.getElementById('detailStickers').textContent = order.quantity * 96;
+            document.getElementById('detailPrice').textContent = order.quantity * 90;
+            document.getElementById('detailTotal').textContent = (order.quantity * 90) + 80;
+            
+            document.getElementById('detailName').textContent = order.name;
+            document.getElementById('detailAddress').textContent = `${order.house_number}, ${order.address}`;
+            document.getElementById('detailCityPincode').textContent = `${order.city} - ${order.pincode}`;
+            document.getElementById('detailState').textContent = order.state;
+            document.getElementById('detailPhone').textContent = `Phone: ${order.phone}`;
+            
+            if (order.logo_url) {
+                document.getElementById('detailLogo').src = order.logo_url;
+                document.getElementById('detailLogo').style.display = 'block';
+            } else {
+                document.getElementById('detailLogo').style.display = 'none';
+            }
+        }
+        
+        function updateTimeline(order) {
+            // Reset all steps
+            document.querySelectorAll('.timeline-step').forEach(step => {
+                step.classList.remove('active', 'completed');
+            });
+            
+            // Mark received step as completed
+            document.querySelector('.timeline-step.received').classList.add('completed');
+            
+            // Update based on status
+            if (order.status === 'processing' || order.status === 'printed' || 
+                order.status === 'shipped' || order.status === 'delivered') {
+                document.querySelector('.timeline-step.processing').classList.add('completed');
+            }
+            
+            if (order.status === 'printed' || order.status === 'shipped' || order.status === 'delivered') {
+                document.querySelector('.timeline-step.printed').classList.add('completed');
+            }
+            
+            if (order.status === 'shipped' || order.status === 'delivered') {
+                document.querySelector('.timeline-step.shipped').classList.add('completed');
+            }
+            
+            if (order.status === 'delivered') {
+                document.querySelector('.timeline-step.delivered').classList.add('completed');
+            }
+            
+            // Set current active step
+            if (order.status === 'received') {
+                document.querySelector('.timeline-step.received').classList.add('active');
+            } else if (order.status === 'processing') {
+                document.querySelector('.timeline-step.processing').classList.add('active');
+            } else if (order.status === 'printed') {
+                document.querySelector('.timeline-step.printed').classList.add('active');
+            } else if (order.status === 'shipped') {
+                document.querySelector('.timeline-step.shipped').classList.add('active');
+            } else if (order.status === 'delivered') {
+                document.querySelector('.timeline-step.delivered').classList.add('active');
+            }
+            
+            // Update dates
+            if (order.created_at) {
+                document.getElementById('receivedDate').textContent = formatDate(order.created_at);
+            }
+            if (order.processing_at) {
+                document.getElementById('processingDate').textContent = formatDate(order.processing_at);
+            }
+            if (order.printed_at) {
+                document.getElementById('printedDate').textContent = formatDate(order.printed_at);
+            }
+            if (order.shipped_at) {
+                document.getElementById('shippedDate').textContent = formatDate(order.shipped_at);
+            }
+            if (order.delivered_at) {
+                document.getElementById('deliveredDate').textContent = formatDate(order.delivered_at);
+            }
+        }
+        
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-IN', options);
+        }
+    });
+    </script>
+</body>
+</html>

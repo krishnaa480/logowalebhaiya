@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Wale Bhaiya - Premium Sticker Printing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #e0e7ff;
+            --secondary: #3f37c9;
+            --dark: #1e1e24;
+            --light: #f8f9fa;
+            --border: #e2e8f0;
+            --success: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            padding: 10px 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .process h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 15px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+        
+        .size-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+        
+        .size-tab {
+            padding: 10px 25px;
+            background-color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .size-tab.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .size-tab:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .size-content {
+            display: none;
+        }
+        
+        .size-content.active {
+            display: block;
+        }
+        
+        .pricing-table {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+        
+        tr:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .size-example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 30px;
+        }
+        
+        .example-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .example-text {
+            max-width: 500px;
+        }
+        
+        .example-text h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .example-text p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(67, 97, 238, 0.9), rgba(63, 55, 201, 0.9)), url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-section.about p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+        
+        .contact span {
+            display: block;
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        
+        .contact i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .footer-section.links ul {
+            list-style: none;
+        }
+        
+        .footer-section.links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section.links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section.links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .size-example {
+                flex-direction: column;
+            }
+            
+            .example-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Logo Wale Bhaiya</h1>
+                <p>Your Trusted Sticker Printing Partner</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Quality Stickers at Affordable Prices</h1>
+                <p>Upload your logo and get professional stickers delivered to your doorstep</p>
+                <a href="order.html" class="btn">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h3>Upload Your Logo</h3>
+                    <p>Upload your high-quality logo or design in PNG, JPG, or SVG format.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h3>Place Your Order</h3>
+                    <p>Fill in your details and select the quantity of stickers you need.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h3>Make Payment</h3>
+                    <p>Pay via UPI, QR code, or other available payment methods.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">4</div>
+                    <h3>Receive Your Stickers</h3>
+                    <p>Get your professionally printed stickers delivered to your address.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Our Pricing</h2>
+            
+            <div class="size-tabs">
+                <div class="size-tab active" data-tab="1inch">1 Inch Stickers</div>
+                <div class="size-tab" data-tab="1.5inch">1.5 Inch Stickers</div>
+                <div class="size-tab" data-tab="2.3inch">2.3 Inch Stickers</div>
+            </div>
+            
+            <!-- 1 Inch Stickers -->
+            <div class="size-content active" id="1inch">
+                <div class="pricing-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sheets</th>
+                                <th>Stickers (150/sheet)</th>
+                                <th>Price (₹90/sheet)</th>
+                                <th>Delivery</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5</td>
+                                <td>750</td>
+                                <td>₹450</td>
+                                <td>₹80</td>
+                                <td>₹530</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>1,500</td>
+                                <td>₹900</td>
+                                <td>₹80</td>
+                                <td>₹980</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>2,250</td>
+                                <td>₹1,350</td>
+                                <td>₹80</td>
+                                <td>₹1,430</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>3,000</td>
+                                <td>₹1,800</td>
+                                <td>₹80</td>
+                                <td>₹1,880</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="size-example">
+                    <img src="https://imgs.search.brave.com/KEGTAsxG31cPDQ9Lm_AE4TYdhIWNfEitoYU4Gqr0pN0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA1LzQ0LzM2Lzky/LzM2MF9GXzU0NDM2/OTI0MV9XSzdBUHhi/OU9GeFZ6V29La2J2/UXBORUF6eFV3TWxn/ai5qcGc" alt="1 Inch Sticker Example" class="example-image">
+                    <div class="example-text">
+                        <h3>1 Inch Stickers</h3>
+                        <p>Perfect for small branding needs, product labels, or QR code stickers. Each sheet contains 150 stickers at 1 inch size.</p>
+                        <p><strong>Ideal for:</strong> Small products, electronics, cosmetics, and packaging labels.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 1.5 Inch Stickers -->
+            <div class="size-content" id="1.5inch">
+                <div class="pricing-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sheets</th>
+                                <th>Stickers (96/sheet)</th>
+                                <th>Price (₹90/sheet)</th>
+                                <th>Delivery</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5</td>
+                                <td>480</td>
+                                <td>₹450</td>
+                                <td>₹80</td>
+                                <td>₹530</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>960</td>
+                                <td>₹900</td>
+                                <td>₹80</td>
+                                <td>₹980</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>1,440</td>
+                                <td>₹1,350</td>
+                                <td>₹80</td>
+                                <td>₹1,430</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>1,920</td>
+                                <td>₹1,800</td>
+                                <td>₹80</td>
+                                <td>₹1,880</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="size-example">
+                    <img src="./assets/wix.png" alt="1.5 Inch Sticker Example" class="example-image">
+                    <div class="example-text">
+                        <h3>1.5 Inch Stickers</h3>
+                        <p>Our most popular size, great for branding, promotions, and product labeling. Each sheet contains 96 stickers at 1.5 inch size.</p>
+                        <p><strong>Ideal for:</strong> Retail products, food packaging, promotional giveaways, and general branding.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2.3 Inch Stickers -->
+            <div class="size-content" id="2.3inch">
+                <div class="pricing-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sheets</th>
+                                <th>Stickers (48/sheet)</th>
+                                <th>Price (₹90/sheet)</th>
+                                <th>Delivery</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5</td>
+                                <td>240</td>
+                                <td>₹450</td>
+                                <td>₹80</td>
+                                <td>₹530</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>480</td>
+                                <td>₹900</td>
+                                <td>₹80</td>
+                                <td>₹980</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>720</td>
+                                <td>₹1,350</td>
+                                <td>₹80</td>
+                                <td>₹1,430</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>960</td>
+                                <td>₹1,800</td>
+                                <td>₹80</td>
+                                <td>₹1,880</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="size-example">
+                    <img src="./assets/oreo.png" alt="2.3 Inch Sticker Example" class="example-image">
+                    <div class="example-text">
+                        <h3>2.3 Inch Stickers</h3>
+                        <p>Large format stickers for maximum visibility and impact. Each sheet contains 48 stickers at 2.3 inch size.</p>
+                        <p><strong>Ideal for:</strong> Window decals, bumper stickers, large product labels, and promotional materials.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="note">Minimum order: 5 sheets. Delivery time: 8-10 business days.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="quote">"The quality of stickers exceeded my expectations. Will definitely order again!"</div>
+                    <div class="author">- Rajesh, Mumbai</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"Fast delivery and excellent customer service. Highly recommended!"</div>
+                    <div class="author">- Priya, Delhi</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"Perfect for my small business. The pricing is very reasonable."</div>
+                    <div class="author">- Amit, Bangalore</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Order Your Stickers?</h2>
+            <p>Get premium quality stickers with fast delivery and excellent customer support.</p>
+            <a href="order.html" class="btn">Start Your Order</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Logo Wale Bhaiya</h3>
+                    <p>Your trusted partner for high-quality sticker printing services at affordable prices.</p>
+                    <div class="contact">
+                        <span><i class="fas fa-phone"></i> +91 6265205686</span>
+                        <span><i class="fas fa-envelope"></i> krishnaagrawal8085@gmail.com</span>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="order.html">Order Now</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/logo_wale_bhaiya_?igsh=b3VvMmh5cXo0Y28y"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/qr/FBQURKMSQCBRM1?autoload=1&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Logo Wale Bhaiya. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality for pricing
+        document.querySelectorAll('.size-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.size-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all content
+                document.querySelectorAll('.size-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
