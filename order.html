@@ -244,9 +244,9 @@
             </div>
             
             <div class="card-body">
-                <form id="stickerForm" action="customize.html" method="post" netlify  data-netlify="true"
-                data-netlify-recaptcha="true"
-                netlify-honeypot="bot-field">
+                <form id="stickerForm" name="stickerForm" method="POST" data-netlify="true" enctype="multipart/form-data">
+                    <input type="hidden" name="form-name" value="stickerForm">
+                    
                     <h2 class="section-title">Personal Information</h2>
                     <div class="form-grid">
                         <div class="form-group">
@@ -363,7 +363,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Proceed to Customization</button>
+                    <button type="submit" class="submit-btn">Submit Order</button>
                 </form>
             </div>
         </div>
