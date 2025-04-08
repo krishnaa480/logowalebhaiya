@@ -225,6 +225,21 @@
             margin-top: 15px;
         }
         
+        .hidden {
+            position: absolute;
+            left: -9999px;
+        }
+        
+        .success-message {
+            display: none;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
@@ -244,8 +259,18 @@
             </div>
             
             <div class="card-body">
-                <form id="stickerForm" name="stickerForm" method="POST"  action="https://formspree.io/f/xqakbabv" >
+                <!-- Success message (hidden by default) -->
+                <div class="success-message" id="successMessage">
+                    <h2>Thank you for your order!</h2>
+                    <p>We've received your order details and will contact you shortly.</p>
+                </div>
+                
+                <form id="stickerForm" name="stickerForm" method="POST" netlify enctype="multipart/form-data" data-netlify="true">
                     <input type="hidden" name="form-name" value="stickerForm">
+                    <!-- Honeypot field for spam protection -->
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
                     
                     <h2 class="section-title">Personal Information</h2>
                     <div class="form-grid">
@@ -413,6 +438,28 @@
         
         setupFilePreview('logo', 'logoPreviewContainer');
         setupFilePreview('payment', 'paymentPreviewContainer');
+        
+        // Handle form submission
+        document.getElementById('stickerForm').addEventListener('submit', function(e) {
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            
+            // For Netlify forms, we don't need to prevent default or use fetch
+            // The form will submit normally and Netlify will handle it
+            
+            // If you want to show success message without page reload, 
+            // you would need to add a Netlify function (more advanced)
+        });
+        
+        // Check for success message in URL (for Netlify form submission)
+        if (window.location.search.includes('success=true')) {
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('stickerForm').style.display = 'none';
+        }
     </script>
 </body>
 </html>
