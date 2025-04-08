@@ -265,7 +265,10 @@
                     <p>We've received your order details and will contact you shortly.</p>
                 </div>
                 
-                <form id="stickerForm" name="stickerForm" method="POST" netlify enctype="multipart/form-data" data-netlify="true">
+                <formid="stickerForm" name="stickerForm" method="POST" 
+                enctype="multipart/form-data" 
+                data-netlify="true"
+                action="/success.html">
                     <input type="hidden" name="form-name" value="stickerForm">
                     <!-- Honeypot field for spam protection -->
                     <p class="hidden">
