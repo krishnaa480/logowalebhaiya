@@ -265,27 +265,131 @@
                     <p>We've received your order details and will contact you shortly.</p>
                 </div>
                 
-                <form id="contact" action="" method="post" data-netlify="true" onsubmit="submit">
-                    <h3>Registration form...</h3>
-                    <h4>Panna Health Club Form</h4>
-                    <fieldset>
-                      <input placeholder="Your name" type="text" tabindex="1" required  name="name">
-                    </fieldset>
-                    <fieldset>
-                      <input placeholder="Your Email Address" type="email" tabindex="2" required name="email">
-                    </fieldset>
-                    <fieldset>
-                      <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required name="number">
-                    </fieldset>
-                   
-                    <fieldset>
-                      <textarea placeholder="Type your message here...." tabindex="5" required name="message"></textarea>
-                    </fieldset>
-                    <fieldset>
-                      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-                    </fieldset>
-                    <p class="copyright">Designed by <a href="https://healgym.netlify.app/" target="_blank" title="Krishna Agrawal">Krishna Agrawal</a></p>
-                  </form>
+                <form id="stickerForm"action="" method="post" data-netlify="true" onsubmit="submit">
+                    <input type="hidden" name="form-name" value="stickerForm">
+                    <!-- Honeypot field for spam protection -->
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
+                    
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Contact Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="house">House Number/Name</label>
+                            <input type="text" id="house" name="house" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="address">Full Address</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" name="pincode" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title">Order Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="stickerSize">Sticker Size</label>
+                            <select id="stickerSize" name="stickerSize" required>
+                                <option value="1">1 inch (150 stickers/sheet)</option>
+                                <option value="1.5" selected>1.5 inch (96 stickers/sheet)</option>
+                                <option value="2.3">2.3 inch (quantity varies)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sheetCount">Number of Sheets</label>
+                            <input type="number" id="sheetCount" name="sheetCount" min="5" value="5" required>
+                            <p class="info-text">Minimum order: 5 sheets</p>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title">Upload Files</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Your Logo</label>
+                            <div class="upload-area" onclick="document.getElementById('logo').click()">
+                                <div class="upload-icon">📁</div>
+                                <div class="upload-text">Click to upload logo (PNG/JPG)</div>
+                                <input type="file" id="logo" name="logo" accept="image/*" required>
+                            </div>
+                            <div class="preview-container" id="logoPreviewContainer"></div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title">Payment Information</h2>
+                    <div class="payment-instructions">
+                        <p><strong>Please scan this QR code to make payment:</strong></p>
+                        <div class="qr-code-container">
+                            <div class="qr-code">
+                                <!-- Replace with your actual QR code image -->
+                                <img src="./assets/qr.png" alt="Payment QR Code" width="100">
+                            </div>
+                            <p class="info-text">UPI ID: your.upi.id@bank</p>
+                        </div>
+                        <p>After payment, please upload the screenshot below:</p>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label>Payment Screenshot</label>
+                        <div class="upload-area" onclick="document.getElementById('payment').click()">
+                            <div class="upload-icon">💳</div>
+                            <div class="upload-text">Click to upload payment screenshot</div>
+                            <input type="file" id="payment" name="payment" accept="image/*" required>
+                        </div>
+                        <div class="preview-container" id="paymentPreviewContainer"></div>
+                    </div>
+                    
+                    <div class="price-summary">
+                        <h3 class="section-title">Order Summary</h3>
+                        <div class="price-row">
+                            <span>Price per sheet:</span>
+                            <span>₹90</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Sheets ordered:</span>
+                            <span id="sheetsCountDisplay">5</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotalDisplay">₹450</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Delivery charge:</span>
+                            <span>₹80</span>
+                        </div>
+                        <div class="price-row price-total">
+                            <span>Total Amount:</span>
+                            <span id="totalDisplay">₹530</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Order</button>
+                </form>
             </div>
         </div>
     </div>
